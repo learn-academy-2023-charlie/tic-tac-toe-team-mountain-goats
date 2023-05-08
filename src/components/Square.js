@@ -1,14 +1,19 @@
 import React from 'react'
 
 const Square = (props) => {
+
 return (
   <>
-{props.square.map((value, index) => {
+  <div id="grid">
+{props.squares.map((value, index) => {
   return (
-    <div className="square" key={index}>
+    <div className="square" key={index} onClick={() => {props.buttonClick(index)}}>
       {value}
     </div>
-  )})}
+    )
+  })}
+  </div>
   </>
-)}
+  )
+}
 export default Square

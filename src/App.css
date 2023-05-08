@@ -2,4 +2,18 @@
   border: 2px solid black;
   height: 100px;
   width: 100px;
+  text-align: center;
+
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 320px;
+  margin: 0 auto;
+
+}
+
+body {
+  background-color: teal;
 }

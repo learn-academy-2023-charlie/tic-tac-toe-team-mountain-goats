@@ -1,19 +1,29 @@
 .square {
   border: 2px solid black;
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   text-align: center;
+  font-size: 100px;
 
 }
 
 #grid {
   display: flex;
   flex-wrap: wrap;
-  width: 320px;
+  width: 470px;
   margin: 0 auto;
+  margin-left: 700px;
+  margin-top: 160px;
 
 }
 
 body {
-  background-color: teal;
+  background-image: url("https://img.freepik.com/free-photo/sliced-fruits-berries-yellow-background_23-2148144274.jpg?w=1800&t=st=1683657734~exp=1683658334~hmac=5460b4e11881c14b0c05ab8179c6f15bd8e91a2840d67e70b681f1999c2078de")
+}
+
+.restart-button {
+  display: 'flex';
+  justify-content: 'center';
+  align-items: 'center';
+  
 }

@@ -53,11 +53,10 @@ const App = () => {
       }
       else if (squares[selectedSquare]) {
         alert("Pick another square!")
-        return
-      }
+      
     } else {
       // settempArray([...tempArray, selectedSquare])
-      squares[selectedSquare] = user ? "X" : "O"
+      squares[selectedSquare] = user ? "🌶" : "🥝"
       setUser(!user)  
       calculateWinner(squares)
     }
@@ -72,9 +71,11 @@ const App = () => {
 
   return (
     <>
-      <h1>Tic Tac Toe</h1>
+      <h1 style={{ textAlign: 'center'}}>Tic Tac Toe: Fruity edition!</h1>
       <Square squares={squares} buttonClick ={buttonClick} />
-      <button onClick={restart}>Restart?</button>
+     <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className="restart-button">  <button onClick={restart}>Restart?</button></div> 
+     
+
     </>
   )
 }

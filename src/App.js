@@ -3,6 +3,7 @@ import Square from './components/Square'
 import './App.css'
 
 const App = () => {
+  const initialSquares = Array(9).fill(null)
   const [squares, setSquares] = useState(Array(9).fill(null))
 
   const [user, setUser] = useState(true)
@@ -48,19 +49,32 @@ const App = () => {
   const buttonClick = (selectedSquare) => {
     if(gameOver) {
       alert ("Game over, restart")
+      return
+      }
+      else if (squares[selectedSquare]) {
+        alert("Pick another square!")
+        return
+      }
     } else {
-      settempArray([...tempArray, selectedSquare])
+      // settempArray([...tempArray, selectedSquare])
       squares[selectedSquare] = user ? "X" : "O"
       setUser(!user)  
       calculateWinner(squares)
     }
   } 
-  
+  const restart = () => {
+    setSquares(initialSquares)
+    // settempArray([])
+    setgameOver(false)
+    setUser(true)
+
+  }
 
   return (
     <>
       <h1>Tic Tac Toe</h1>
       <Square squares={squares} buttonClick ={buttonClick} />
+      <button onClick={restart}>Restart?</button>
     </>
   )
 }

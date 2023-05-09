@@ -5,9 +5,12 @@ import './App.css'
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
 
-  const [userOne, setuserOne] = useState(true)
+  const [user, setUser] = useState(true)
+  const [gameOver, setgameOver] = useState(false)
+  const [tempArray, settempArray] = useState([])
+  //a place to collect which index they're clicking on
 
-  const [userTwo, setuserTwo] = useState(false)
+
 
  // Pseudo
   // Purpose of function: update the value on the tic tac toe board. Name of function is buttonClick. 
@@ -18,29 +21,40 @@ const App = () => {
   // useState to toggle between true and false.
   // Else put O. 
 
-  const buttonClick = (selectedSquare) => {
-    squares[selectedSquare] = setSquares
-    setSquares([...squares])
-      if(userOne === true) {
-        return "X"
+  function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    console.table(lines)
+    //here we preset the winning combinations
+    for (let i = 0; i < lines.length; i++) {
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        setgameOver(true)
+        alert (`${squares[a]}' is the winner!'`)
+        //return squares[a];
       }
-        else {
-          return "O"
     }
+    return null;
   }
-  console.table(squares)
-
-  // const squareButton = (selectedIndex) => {
-  //   const gameValues = ["X", "O"]
-  //   const newButton = [...squares]
-    
-  //   newButton[selectedIndex] = gameValues[i]
-  //   setSquares(newButton)
-  //   return newButton
-    
-  // }
-
-
+  
+  const buttonClick = (selectedSquare) => {
+    if(gameOver) {
+      alert ("Game over, restart")
+    } else {
+      settempArray([...tempArray, selectedSquare])
+      squares[selectedSquare] = user ? "X" : "O"
+      setUser(!user)  
+      calculateWinner(squares)
+    }
+  } 
   
 
   return (
@@ -50,5 +64,4 @@ const App = () => {
     </>
   )
 }
-
 export default App

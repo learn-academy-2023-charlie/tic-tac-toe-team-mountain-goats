@@ -56,7 +56,7 @@ const App = () => {
       
     } else {
       // settempArray([...tempArray, selectedSquare])
-      squares[selectedSquare] = user ? "🌶" : "🥝"
+      squares[selectedSquare] = user ? "X" : "O"
       setUser(!user)  
       calculateWinner(squares)
     }
